@@ -34,8 +34,8 @@
     </nav>
 
     <div class="container h-100">
-        <div class="row">
-            <div class="card mt-5" style="padding: 15px;">
+        <div class="row mt-5">
+            <div class="card" style="padding: 15px;">
                 <form method="POST" class="mb-2">
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1" class="my-2">Enter data</label>
@@ -106,14 +106,53 @@
                         $c = $Cumi_Fre[$index-1];
 
                         $Median = (((($fre_sum / 2) - $c) / $f) * $h) + $l;
+
+                        echo '<label for="exampleInputEmail1" class="my-2">Solution :</label>
+                              <table class="table table-bordered">
+                              <tbody>
+                              <tr>
+                                  <th scope="row">X</th>';
+
+                        $i = 0;
+                        for ($i = 0; $i < $count1; $i++) {
+                            echo "<td>" . $class[$i] . "</td>";
+                        }
+
+                        echo '</tr>
+                              </tbody>
+                              <tbody>
+                                  <tr>
+                                  <th scope="row">F</th>';
+
+                        for ($i = 0; $i < $count2; $i++) {
+                            echo "<td>" . $freq[$i] . "</td>";
+                        }
+
+                        echo '</tr>
+                              </tbody>
+                              <tbody>
+                                  <tr>
+                                  <th scope="row">Cum_Fre</th>';
+
+                        for ($i = 0; $i < $count2; $i++) {
+                            echo "<td>" . $Cumi_Fre[$i] . "</td>";
+                        }
+                        echo '</tr>
+                              </tbody>
+                              </table>
+                              <div>M = L + ( ( (n / 2) - c) * h) / f
+                              <br><br><label>M = '.$l.' + ( ( ('.$n.' / 2) - '.$c.') * '.$h.') / '.$f.'</label></div>';
+                        echo '<div style="margin-top: 13px;">
+                                  <label class="mt-2">';
+                        echo "Median is : " . $Median;
+                        echo '</label>
+                              </div>
+                              </label>';
                     }
                 } else {
-                    $Median = "";
-                }
+                    $index = "";
+                  }
                 ?>
-
-                <label for="exampleInputEmail1" class="my-2">Output :</label>
-                <label><?php echo "Median is : ". $Median; ?></label>
 
             </div>
         </div>

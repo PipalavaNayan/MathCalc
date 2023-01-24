@@ -34,8 +34,8 @@
   </nav>
 
     <div class="container h-100">
-        <div class="row">
-            <div class="card mt-5" style="padding: 15px;">
+        <div class="row mt-5">
+            <div class="card" style="padding: 15px;">
                 <form method="POST" class="mb-2">
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1" class="my-2">Enter data</label>
@@ -49,20 +49,62 @@
                     $count = 0;
                     $sum = 0;
                     $Mode = 0;
+                    $ele = 0;
+                    $c = 0;
+                    $temp = 0;
+                    $temp_ele = 0;
+                    $answer = 0;
                     
                     $data = $_POST['mean'];
                     $ans = explode(",", $data);
                     $count = count($ans);
                     
                     sort($ans);
-                    $Mode = "Mode is :".$ans[$count-1];
-                   
+                    $i = 0;
+                    $j = 0;
+
+                    for($i = 0; $i < $count; $i++) {
+                      $ele = $ans[$i];
+
+                      for ($j = 0; $j < $count; $j++) {
+                        if($ele == $ans[$j]) {
+                            $temp++;
+                            $temp_ele = $ans[$j];
+                        }
+                      }
+
+                      if($c < $temp) {
+                          $answer = $temp_ele;
+                          $c = $temp;
+                      }
+
+                      $temp = 0;
+                      $temp_ele = 0;
+                    }
+
+                    echo '<label for="exampleInputEmail1" class="my-2">Solution :</label>
+                          <table class="table table-bordered">
+                          <tbody>
+                            <tr>
+                              <th scope="row">X</th>';
+
+                          $i = 0;
+                          for ($i = 0; $i < $count; $i++) {
+                            echo "<td>" . $ans[$i] . "</td>";
+                          }
+
+                    echo '</tr>
+                          </tbody>
+                          </table>';
+                    echo '<div>
+                                  <label class="mt-2">';
+                        echo "Mode is :".$answer;
+                        echo '</label>
+                              </div>';
                 } else {    
-                    $Mode = "";
+                    $answer = "";
                 }
                 ?>
-                <label for="exampleInputEmail1" class="my-2">   Output :</label>
-                <label><?php echo  $Mode; ?></label>
 
             </div>
         </div>

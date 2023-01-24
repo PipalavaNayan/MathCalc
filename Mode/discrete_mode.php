@@ -45,7 +45,7 @@
                         <label for="exampleInputEmail1" class="my-2">Enter Frequency</label>
                         <input type="text" class="form-control" name="frequency" placeholder="Format (a,b,c,...)">
                     </div>
-                    <button type="submit" name="submit" value="submit" class="btn btn-primary">Find Median</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-primary">Find Mode</button>
                 </form>
 
                 <?php
@@ -77,18 +77,42 @@
                                 $index = $x; 
                             }
                         }
-                       
 
-                        $mode = (int)$ans1[$index];
+                        echo '<label for="exampleInputEmail1" class="my-2">Solution :</label>
+                        <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th scope="row">X</th>';
+
+                        $i = 0;
+                        for ($i = 0; $i < $count1; $i++) {
+                            echo "<td>" . $ans1[$i] . "</td>";
+                        }
+
+                        echo '</tr>
+                              </tbody>
+                              <tbody>
+                                  <tr>
+                                  <th scope="row">F</th>';
+
+                        for ($i = 0; $i < $count2; $i++) {
+                            echo "<td>" . $ans2[$i] . "</td>";
+                        }
+
+                        echo '</tr>
+                              </tbody>
+                              </table>';
+                        echo '<div>
+                                  <label class="mt-2">';
+                        echo "Mode is : " . (int)$ans1[$index];
+                        echo '</label>
+                              </div>
+                              </label>';
                     }
-                }
-                else {
-                    $mode = "";
-                }
+                } else {
+                    $index = "";
+                  }
                 ?>
-
-                <label for="exampleInputEmail1" class="my-2">Output :</label>
-                <label><?php echo "Mode is : " .$mode; ?></label>
 
             </div>
         </div>

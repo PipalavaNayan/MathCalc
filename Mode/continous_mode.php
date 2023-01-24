@@ -34,8 +34,8 @@
     </nav>
 
     <div class="container h-100">
-        <div class="row">
-            <div class="card mt-5" style="padding: 15px;">
+        <div class="row mt-5"">
+            <div class="card style="padding: 15px;">
                 <form method="POST" class="mb-2">
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1" class="my-2">Enter data</label>
@@ -45,7 +45,7 @@
                         <label for="exampleInputEmail1" class="my-2">Enter Frequency</label>
                         <input type="text" class="form-control" name="frequency" placeholder="Format (a,b,c,...)">
                     </div>
-                    <button type="submit" name="submit" value="submit" class="btn btn-primary">Find Median</button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-primary">Find Mode</button>
                 </form>
 
                 <?php
@@ -81,7 +81,6 @@
                                 $index = $x; 
                             }
                         }
-                       // echo "index is ".$index;
                         $abc = explode("-", $class[$index]);
 
                         $l = $abc[0];
@@ -91,19 +90,44 @@
                         $f2 = $freq[$index+1];
                        
                         $Mode = ($l+(($fm-$f1)/((2*$fm)-$f1-$f2))*$h);
-                        // echo "l is ".$l;
-                        // echo "fm is ".$fm;
-                        // echo "f1 is".$f1;
-                        // echo "f2 is ".$f2;
-                        // echo "h is ".$h;
+                
+                        echo '<label for="exampleInputEmail1" class="my-2">Solution :</label>
+                            <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th scope="row">X</th>';
 
-                        
-                } }
-                ?>
+                            $i = 0;
+                            for ($i = 0; $i < $count1; $i++) {
+                                echo "<td>" . $class[$i] . "</td>";
+                            }
 
-                <label for="exampleInputEmail1" class="my-2">Output :</label>
-                <label><?php echo "Mode is : ". $Mode; ?></label>
+                        echo '</tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                    <th scope="row">F</th>';
 
+                            for ($i = 0; $i < $count2; $i++) {
+                                echo "<td>" . $freq[$i] . "</td>";
+                            }
+
+                        echo '</tr>
+                            </tbody>
+                            </table>
+                            <div>Z = L + ((f<sub>m</sub> - f<sub>1</sub>) / (2 * f<sub>m</sub> - f<sub>1</sub> - f<sub>2</sub>)) * h;
+                            <br><br><label>Z = '.$l.' + ('.$fm.' - '.$f1.') / (2 * '.$fm.' - '.$f1.' - '.$f2.') * '.$h.'</label></div>';
+                        echo '<div style="margin-top: 13px;">
+                                <label class="mt-2">';
+                        echo "Mode is : " . $Mode;
+                        echo '</label>
+                            </div>
+                            </label>';
+                        }
+                    } else {
+                        $Mode = "";
+                    }
+                    ?>
             </div>
         </div>
     </div>
